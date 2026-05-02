@@ -1,30 +1,9 @@
 # 🗳️ VoteWise India — Election Education Assistant
 
-> A gamified, multilingual, zero-dependency web app that empowers Indian citizens to understand the democratic voting process, verify their eligibility, locate polling booths, learn election terminology, and test their civic knowledge — all in one place.
+A gamified, multilingual, zero-dependency web app that empowers Indian citizens to understand the democratic voting process, verify their eligibility, locate polling booths, learn election terminology, and test their civic knowledge — all in one place.
 
 ---
 
-## 📌 Table of Contents
-
-- [Overview](#overview)
-- [Live Demo](#live-demo)
-- [Screenshots](#screenshots)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [File Breakdown](#file-breakdown)
-- [Gamification System](#gamification-system)
-- [Multilingual Support](#multilingual-support)
-- [Tech Stack](#tech-stack)
-- [Design System](#design-system)
-- [Getting Started](#getting-started)
-- [Deploying to GitHub Pages](#deploying-to-github-pages)
-- [Customisation Guide](#customisation-guide)
-- [Data & Content](#data--content)
-- [Browser Compatibility](#browser-compatibility)
-- [Contributing](#contributing)
-- [License](#license)
-
----
 
 ## Overview
 
