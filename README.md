@@ -28,6 +28,52 @@ The app targets first-time voters, students, and citizens who want to understand
 <img width="1364" height="686" alt="4" src="https://github.com/user-attachments/assets/d4ba199f-30e6-4510-85d6-78aadcd723a0" />
 
 
+🎯 Chosen Vertical
+The chosen vertical is Civic Technology / Voter Education, sitting at the intersection of public service, digital literacy, and social impact.
+India is the world's largest democracy, with over 970 million registered voters across 543 Lok Sabha constituencies. Yet voter turnout, especially among first-time voters and younger demographics, remains inconsistent — often not due to apathy, but due to confusion. Many eligible citizens don't vote simply because they don't know:
+
+Whether they are eligible
+How to register or confirm their registration
+What documents to carry
+Where their polling booth is
+What actually happens inside a polling station
+
+This vertical was chosen because the problem is real, the audience is massive, and the solution requires no backend, no database, and no ongoing cost — just clear information delivered in an engaging format.
+The target users are:
+
+First-time voters (18–22 year olds) who have never voted before
+Rural and semi-urban citizens who may lack access to civic guidance
+Students who want to understand the election process as part of civic education
+NRIs and diaspora who want to help family members back home navigate the process
+Election volunteers and NGOs who want a ready-made tool to share with communities
+
+
+🧠 Approach and Logic
+The core design philosophy was: make the intimidating feel simple, and make the simple feel rewarding.
+Why gamification?
+Civic information is often presented as dry government text. The XP system, level progression, and achievement badges borrow patterns from learning apps (like Duolingo) to create a sense of forward momentum. Users are rewarded not just for completing tasks but for exploring — visiting a new tab earns XP, listening to a glossary term earns XP, even changing the language earns XP. This nudges users to discover content they might have otherwise skipped.
+Why no framework or build tool?
+The decision to use pure HTML, CSS, and JavaScript was deliberate:
+
+Accessibility — A teacher or NGO volunteer should be able to download the zip, open the file, and have it work with no setup.
+Deployability — Any static host (GitHub Pages, Netlify, Vercel, even a WhatsApp-shared zip file) works out of the box.
+Maintainability — All content (quiz questions, glossary terms, steps, facts) lives in plain JavaScript arrays. A non-developer can update the data with basic guidance.
+Performance — No JavaScript bundle, no hydration, no runtime overhead. The app loads in milliseconds on any device.
+
+Why multilingual from day one?
+India has 22 scheduled languages. English-only civic tools immediately exclude a large portion of the electorate. The three languages chosen — English, Hindi, and Bengali — cover a significant share of the population, with the architecture designed to make adding Tamil, Telugu, Marathi, or any other language straightforward without restructuring the codebase.
+Tab-based SPA architecture
+Rather than multiple HTML pages (which would require navigation and reload), all 9 sections live in a single HTML file. Only one section is visible at a time (display: block vs display: none), toggled by the navigation bar. This keeps the experience fast, state persistent (no data loss on navigation), and the codebase simple.
+
+
+📐 Assumptions Made
+The following assumptions were made during the design and development of this project:
+About the user:
+
+The user has a basic smartphone or desktop browser with internet access (for Google Fonts to load).
+The user is either a first-time voter or someone brushing up on the process — not an election official or policy expert.
+The user may be more comfortable in Hindi or Bengali than English, hence the trilingual support.
+The user does not need their progress saved between sessions (no localStorage persistence was implemented; refreshing the page resets XP and achievements).
 
 ---
 
