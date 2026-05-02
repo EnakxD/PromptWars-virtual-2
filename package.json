@@ -1,0 +1,11 @@
+{
+  "name": "votewise",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "npx serve -l $PORT"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}
