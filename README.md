@@ -417,6 +417,11 @@ The entire visual language is defined via CSS custom properties in `:root` in `s
 | `--radius-xl` | 28px | Primary feature cards |
 | `--radius-pill` | 999px | Tags, badges, language buttons |
 
+
+
+## Conclusion
+
+
 VoteWise India is a lightweight yet feature-rich civic education tool built entirely with vanilla HTML, CSS, and JavaScript — no frameworks, no dependencies, no backend. What started as a single monolithic HTML file has been refactored into a clean, maintainable three-file project ready for local development and GitHub deployment.
 The app covers the full voter journey — from eligibility checking and document preparation to understanding EVMs, locating polling booths, and testing civic knowledge — wrapped in a gamified experience designed to make democratic participation feel approachable rather than bureaucratic.
 A few things make it stand out architecturally:
