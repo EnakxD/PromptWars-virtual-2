@@ -1,0 +1,403 @@
+/* ============================================================
+VoteWise India — learn.js
+Election System Learning Section
+============================================================ */
+
+const LEARN_TOPICS = {
+structure: {
+icon: '🏛️',
+title: "India's Electoral System Structure",
+subtitle: "How India's democracy is organized at every level",
+gradient: 'linear-gradient(135deg, #06038D, #1a16c7)',
+modules: [
+{
+title: '🏛️ The Three-Tier Government',
+content: `India is a federal democracy with three tiers of elected government. At the national level, Parliament
+consists of the Lok Sabha (lower house) and the Rajya Sabha (upper house). At the state level, there are Legislative
+Assemblies (Vidhan Sabhas) and, in some states, Legislative Councils (Vidhan Parishads). At the local level, there are
+Panchayats (for rural areas) and Municipal Corporations (for urban areas).`,
+list: [
+'Lok Sabha: 543 seats, directly elected every 5 years',
+'Rajya Sabha: 245 seats, elected by state legislatures',
+'Vidhan Sabha: varies by state (60–500 seats)',
+'Panchayats & ULBs: millions of local elected bodies',
+],
+fact: { label: 'Did you know?', text: 'India has over 30 lakh (3 million) elected representatives at all levels, making
+it the largest representative democracy in the world.' }
+},
+{
+title: '☸️ The Election Commission of India (ECI)',
+content: `The Election Commission of India (ECI) is a constitutional body established under Article 324 of the
+Constitution. It is an autonomous body fully responsible for administering electoral processes in India. The ECI
+operates with a Chief Election Commissioner (CEC) and two Election Commissioners, all appointed by the President of
+India.`,
+list: [
+'Established: January 25, 1950 (National Voters Day)',
+'Conducts: Lok Sabha, Rajya Sabha, State Assembly, Presidential, VP elections',
+'Independence: Removal of CEC requires same process as a Supreme Court judge',
+'Helpline: 1950 for voter registration and election queries',
+],
+fact: { label: 'Key Power', text: "The ECI can postpone elections, cancel polling, or impose the Model Code of Conduct —
+its decisions are binding and cannot be easily challenged." }
+},
+{
+title: '🗺️ First Past The Post System (FPTP)',
+content: `India uses the First Past The Post (FPTP) electoral system for Lok Sabha and Vidhan Sabha elections. In this
+system, each constituency elects one representative, and the candidate with the most votes wins — even if they do not
+get a majority (more than 50%). This is also called a "plurality" system.`,
+list: [
+'Simple majority wins — no run-off elections needed',
+'Each voter casts one vote for one candidate',
+'Encourages stable government formation',
+'Can produce "manufactured majorities" — large seat margins from moderate vote margins',
+],
+fact: { label: 'Example', text: 'A candidate who gets 30% of the vote in a 5-candidate race can win their constituency
+if all other candidates split the remaining 70%.' }
+}
+]
+},
+
+evm: {
+icon: '⚡',
+title: 'How EVMs & VVPATs Work',
+subtitle: "India's tamper-proof electronic voting technology explained",
+gradient: 'linear-gradient(135deg, #FF671F, #E9A800)',
+modules: [
+{
+title: '🖥️ What is an EVM?',
+content: `An Electronic Voting Machine (EVM) is a portable, battery-operated device developed by Bharat Electronics
+Limited (BEL) and Electronics Corporation of India (ECIL). It has been used in all Indian elections since 2004. An EVM
+consists of two units — the Control Unit (with the Polling Officer) and the Balloting Unit (in the voting
+compartment).`,
+list: [
+'Operates on a single alkaline battery — works without electricity',
+'Can record up to 3,840 votes per balloting unit',
+'Supports up to 64 candidates per constituency',
+'Fully standalone — never connected to internet or any network',
+],
+fact: { label: 'Security', text: 'EVM data is stored in a one-time programmable chip. Once coded for an election, it
+cannot be reprogrammed — even by the manufacturer.' }
+},
+{
+title: '📋 VVPAT: The Paper Trail',
+content: `The Voter Verifiable Paper Audit Trail (VVPAT) is a printer attached to the EVM's balloting unit. When you
+press a button on the EVM, the VVPAT prints a paper slip showing the candidate's name, party symbol, and serial number.
+This slip is visible through a sealed glass window for exactly 7 seconds before falling into a sealed compartment.`,
+list: [
+'Provides visual confirmation of your vote',
+'Paper slip drops into tamper-proof sealed box automatically',
+'VVPAT slips from 5 randomly selected booths are counted per constituency',
+'If EVM and VVPAT counts don\'t match, VVPAT result prevails',
+],
+fact: { label: 'Introduced', text: 'VVPATs were first used in all constituencies in the 2019 Lok Sabha elections, making
+Indian elections more transparent and verifiable.' }
+},
+{
+title: '🔒 EVM Security Measures',
+content: `EVMs go through multiple layers of security to ensure tamper-proof elections. They are sealed and stored in
+secure warehouses with CCTV monitoring, 3-tier security locks, and randomised assignment to constituencies. Candidates
+and their agents can inspect EVMs before and after polling.`,
+list: [
+'First-level checking: done in presence of political party reps',
+'Mock polling: 1000 votes tested before actual election day',
+'Randomisation: EVMs are assigned to booths by lottery',
+'Strong room sealing: EVMs are sealed in vaults after polling, guarded 24/7',
+],
+fact: { label: 'Challenge', text: 'Any candidate can challenge EVM results by paying a deposit (₹40,000) for VVPAT slip
+counting. If tampering is found, the deposit is refunded.' }
+}
+]
+},
+
+parties: {
+icon: '🎯',
+title: 'Political Parties in India',
+subtitle: "Understanding the multi-party democracy and party recognition",
+gradient: 'linear-gradient(135deg, #046A38, #0A8F4C)',
+modules: [
+{
+title: '🏛️ National vs State Parties',
+content: `The Election Commission of India classifies political parties as National Parties or State Parties based on
+their electoral performance. A party is recognised as a National Party if it wins 2% of Lok Sabha seats from at least 3
+states, or gets 6% votes in 4 or more states plus 4 Lok Sabha seats. State parties are recognised based on performance
+within a particular state.`,
+list: [
+'National Parties currently (2024): BJP, INC, BSP, CPI(M), NPP, NCP(SP), AITC',
+'State parties vary by state — recognised based on local vote share',
+'Recognised parties get reserved symbols, free airtime on Doordarshan/AIR',
+'Registered but unrecognised parties can choose from a list of free symbols',
+],
+fact: { label: 'Scale', text: 'India has over 2,700 registered political parties, making it one of the most politically
+diverse multi-party systems in the world.' }
+},
+{
+title: '💰 Election Finance Rules',
+content: `Election finance is strictly regulated by the ECI. Candidates must maintain accounts of all election expenses
+and submit them within 30 days of results. There are strict spending limits for each type of election — exceeding these
+limits is grounds for disqualification.`,
+list: [
+'Lok Sabha candidate spending limit: ₹95 lakh (large states)',
+'Vidhan Sabha candidate limit: ₹40 lakh (large states)',
+'Cash transactions above ₹10,000 for election purposes are banned',
+'Electoral Bond scheme allowed corporate donations to parties (now struck down by Supreme Court in 2024)',
+],
+fact: { label: 'Transparency', text: "Parties with more than ₹20 crore in income must have their accounts audited by a
+CA and submit them to the ECI each year." }
+},
+{
+title: '🗳️ Coalition Politics & Alliances',
+content: `India's multi-party system often leads to coalition governments where no single party gets a majority. Parties
+form alliances before and after elections to pool votes and share power. The National Democratic Alliance (NDA) led by
+BJP and the INDIA bloc led by INC are the two major alliance groups as of 2024.`,
+list: [
+'Simple majority in Lok Sabha = 272 seats needed to form government',
+'Hung Parliament: no party/alliance gets majority — President invites largest party',
+'Coalition governments have been the norm since 1989',
+'Vote of No Confidence can topple a government mid-term',
+],
+fact: { label: 'History', text: "India has had 14 different Prime Ministers — Nehru, Indira Gandhi, and Narendra Modi
+are the only ones to have served uninterrupted for 5+ years." }
+}
+]
+},
+
+mcc: {
+icon: '📜',
+title: 'Model Code of Conduct',
+subtitle: "The rules that govern elections during the campaign period",
+gradient: 'linear-gradient(135deg, #1a16c7, #06038D)',
+modules: [
+{
+title: '📜 What is the MCC?',
+content: `The Model Code of Conduct (MCC) is a set of guidelines issued by the Election Commission of India that governs
+the conduct of political parties and candidates during elections. It comes into effect from the day the election
+schedule is announced and remains until results are declared. The MCC has no statutory backing — it is enforced through
+moral sanction and the ECI's powers under Article 324.`,
+list: [
+'Applies to: All political parties, candidates, and the ruling government',
+'Duration: From election announcement until results day',
+'Scope: Covers rallies, speeches, advertising, policy announcements, use of government resources',
+'Enforcement: ECI can censure, cancel nominations, or recommend FIR filing',
+],
+fact: { label: 'History', text: 'The MCC was first evolved during the 1960 Kerala assembly elections and has grown
+organically since then through ECI decisions and Supreme Court guidance.' }
+},
+{
+title: '🚫 What the MCC Prohibits',
+content: `During the MCC period, the ruling government cannot announce new policies, schemes, or projects that could
+influence voters. Candidates cannot use religion, caste, or community for votes. Bribing voters with money, gifts, or
+liquor is a criminal offence. No party can use government machinery (vehicles, buildings, officials) for campaign
+purposes.`,
+list: [
+'No new welfare scheme announcements by ruling party',
+'No use of government vehicles for campaign activities',
+'No candidate can appeal to religion, race, caste or community to seek votes',
+'No voter bribery — cash distribution is monitored by flying squads',
+],
+fact: { label: 'Action', text: 'During the 2024 Lok Sabha elections, ECI seized over ₹4,650 crore in cash, liquor,
+drugs, and freebies meant to influence voters — a record seizure.' }
+},
+{
+title: '📢 Election Campaign Rules',
+content: `Political campaigns must end 48 hours before polling day — this is called the "campaign silence period".
+During this time, no political rallies, speeches, or campaigning is allowed. Paid political advertising on TV and radio
+must follow ECI's Media Certification and Monitoring Committee (MCMC) rules.`,
+list: [
+'48-hour silence before polling: absolute ban on all campaigning',
+'Exit polls can only be published after the final phase of voting ends',
+'Political ads on TV must be pre-certified by MCMC',
+'Social media posts also covered — misleading content can be flagged and removed',
+],
+fact: { label: 'Violation', text: "MCC violations are taken seriously. Candidates can have their campaigns curtailed,
+face legal action, or even have their candidacy cancelled in extreme cases." }
+}
+]
+},
+
+history: {
+icon: '📜',
+title: 'History of Indian Elections',
+subtitle: "From the first general election in 1951-52 to the present",
+gradient: 'linear-gradient(135deg, #E9A800, #FF671F)',
+modules: [
+{
+title: '🌅 The First General Election (1951–52)',
+content: `India held its first general election from October 1951 to February 1952 — a massive logistical exercise for a
+newly independent nation with over 80% illiteracy. Candidate symbols were used on ballot papers because most voters
+couldn't read. Over 17 crore voters participated and the Indian National Congress won 364 of 489 Lok Sabha seats under
+the leadership of Jawaharlal Nehru.`,
+timeline: [
+{ year: '1950', event: 'Election Commission of India established on January 25' },
+{ year: '1951', event: 'First Election Commissioner Sukumar Sen leads historic election planning' },
+{ year: '1951–52', event: '1st Lok Sabha Election — Congress wins with 364 seats; Nehru becomes PM' },
+{ year: '1957', event: '2nd General Election — Congress retains power' },
+{ year: '1962', event: 'Indelible ink introduced to prevent double voting' },
+]
+},
+{
+title: '⚡ Key Milestones in Indian Electoral History',
+content: `Indian elections have evolved enormously over 7 decades. The introduction of EVMs eliminated ballot stuffing
+and booth capturing. NOTA was introduced in 2013. The voting age was lowered from 21 to 18 in 1989. Online voter
+registration began in 2000s, and e-EPIC (digital voter ID) was launched in 2021.`,
+timeline: [
+{ year: '1975–77', event: 'Emergency declared — elections suspended. Democracy restored in 1977 Janata Party victory' },
+{ year: '1989', event: 'Voting age reduced from 21 to 18 years — 3.5 crore new voters added' },
+{ year: '1998', event: 'EVMs used nationwide for the first time' },
+{ year: '2004', event: 'EVMs used in all constituencies — paper ballots retired' },
+{ year: '2013', event: 'NOTA (None Of The Above) option introduced on EVMs' },
+{ year: '2019', event: 'VVPATs deployed in all 10.35 lakh booths across India' },
+{ year: '2021', event: 'e-EPIC (digital Voter ID) launched for download' },
+]
+},
+{
+title: '🏆 Largest Lok Sabha Elections',
+content: `India's Lok Sabha elections are the largest democratic exercises in human history. The 2024 election set a new
+record with over 96.8 crore registered voters across 543 constituencies. Counting is done electronically, making results
+available within 24 hours of polling completion.`,
+list: [
+'1951–52: 1st election — 17.3 crore voters, 7% turnout was considered huge',
+'1984: 81.4 crore votes cast after Indira Gandhi assassination — record turnout then',
+'2014: BJP wins majority on its own for first time in 30 years — 66.4% turnout',
+'2019: 61.4 crore votes cast — highest ever in world history at that time',
+'2024: ~96.8 crore registered voters — 7 phase election over 44 days',
+],
+fact: { label: 'Scale', text: "The 2024 Lok Sabha election used 55 lakh EVMs, 15 lakh VVPATs, 10.5 lakh polling
+stations, and deployed 1.5 crore polling officials." }
+}
+]
+},
+
+rights: {
+icon: '⚖️',
+title: 'Your Rights as a Voter',
+subtitle: "Know your legal protections and what you can demand",
+gradient: 'linear-gradient(135deg, #046A38, #06038D)',
+modules: [
+{
+title: '⚖️ Fundamental Right to Vote',
+content: `In India, the right to vote is a statutory right (under the Representation of the People Act, 1950) for
+eligible citizens, and has been recognized as a constitutional right by the Supreme Court of India. Every citizen aged
+18 or above who is enrolled in the electoral roll has the unconditional right to cast their vote — regardless of caste,
+religion, gender, language, or economic status.`,
+list: [
+'Right to enroll in the electoral roll (Form 6)',
+'Right to vote secretly — no one can force you to reveal your choice',
+'Right to complain if denied voting — call 1950',
+'Right to challenge wrong entries in electoral roll',
+],
+fact: { label: 'Protection', text: 'Section 135B of the Representation of the People Act mandates that all employers
+(govt and private) must give PAID LEAVE to employees on election day.' }
+},
+{
+title: '🛡️ Protection Against Electoral Fraud',
+content: `The Representation of the People Act (1951) provides strong protections against electoral fraud. Bribery,
+impersonation, booth capturing, and intimidation of voters are all criminal offences punishable with imprisonment. The
+ECI has Flying Squads and Static Surveillance Teams (SST) to prevent malpractice.`,
+list: [
+'Voter bribery: up to 1 year imprisonment (Section 171B IPC)',
+'Impersonating another voter: up to 1 year imprisonment',
+'Booth capturing: up to 3 years imprisonment',
+'Threatening voters: up to 1 year imprisonment',
+],
+fact: { label: 'Report Violations', text: 'You can report electoral violations on the cVIGIL app (developed by ECI) with
+photo/video evidence. ECI must act within 100 minutes of a verified complaint.' }
+},
+{
+title: '📱 cVIGIL & Voter Services',
+content: `The ECI has launched multiple digital services to make elections more transparent and accessible. The Voter
+Helpline (1950) is active 24/7 during elections. The cVIGIL mobile app allows citizens to report election violations
+with geotagged photos and videos. The Voter Service Portal allows online registration, address changes, and polling
+station information.`,
+list: [
+'Voter Helpline: 1950 (free call, available in multiple languages)',
+'cVIGIL App: report violation → action within 100 minutes guaranteed',
+'Voter Service Portal: voters.eci.gov.in — register, update, download e-EPIC',
+'KnowYourCandidate: eci.gov.in — check criminal record and assets of candidates',
+],
+fact: { label: 'PWD Voters', text: 'Voters with disabilities (PwD) have special rights: home voting facility, accessible
+polling booths, priority queues, and Braille-enabled voter slips.' }
+}
+]
+}
+};
+
+let currentLearnTopic = 'structure';
+
+function showLearnTopic(topic, btn) {
+currentLearnTopic = topic;
+
+// Update active button
+document.querySelectorAll('.learn-topic-btn').forEach(b => b.classList.remove('active'));
+if (btn) btn.classList.add('active');
+
+// Render content
+renderLearnContent(topic);
+
+// Unlock achievement
+if (typeof unlockAchievement === 'function') unlockAchievement('learner');
+if (typeof earnXP === 'function') earnXP(8, 'Learned something new! +8 XP');
+}
+
+function renderLearnContent(topicKey) {
+const topic = LEARN_TOPICS[topicKey];
+if (!topic) return;
+
+const container = document.getElementById('learn-content');
+if (!container) return;
+
+const modulesHTML = topic.modules.map(mod => {
+let bodyHTML = '';
+
+if (mod.content) {
+bodyHTML += `<p>${mod.content}</p>`;
+}
+
+if (mod.list) {
+bodyHTML += `<ul class="learn-list">${mod.list.map(item => `<li>${item}</li>`).join('')}</ul>`;
+}
+
+if (mod.timeline) {
+bodyHTML += `<div class="learn-timeline">${mod.timeline.map(t => `
+    <div class="learn-timeline-item">
+        <strong>${t.year}</strong>
+        <span>${t.event}</span>
+    </div>
+    `).join('')}
+</div>`;
+}
+
+if (mod.fact) {
+bodyHTML += `
+<div class="learn-fact-box">
+    <strong>💡 ${mod.fact.label}</strong>
+    <p>${mod.fact.text}</p>
+</div>
+`;
+}
+
+return `
+<div class="learn-module">
+    <h3>${mod.title}</h3>
+    ${bodyHTML}
+</div>
+`;
+}).join('');
+
+container.innerHTML = `
+<div class="learn-content-card">
+    <div class="learn-hero" style="background:${topic.gradient}">
+        <span class="learn-hero-icon">${topic.icon}</span>
+        <h2>${topic.title}</h2>
+        <p>${topic.subtitle}</p>
+    </div>
+    <div class="learn-body">
+        ${modulesHTML}
+    </div>
+</div>
+`;
+}
+
+// Initialize learn section on load
+document.addEventListener('DOMContentLoaded', () => {
+renderLearnContent('structure');
+});

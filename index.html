@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com; connect-src 'self' https://firebaseinstallations.googleapis.com https://firebaselogging.googleapis.com https://maps.googleapis.com">
+    <title>VoteWise India — Election Education Assistant</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Baloo+2:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="lang-en">
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-40px;left:0;background:#000;color:#fff;padding:8px;z-index:100;transition:top 0.2s;">Skip to main content</a>
+
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">🎉 +10 XP Earned!</div>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-stripe"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="ashoka-wheel">☸</span>
+                <span>India's #1 Election Education Platform</span>
+            </div>
+            <h1>
+                <span class="english-text">Your <span>Vote</span> Matters.<br>Here's How to Use It.</span>
+                <span class="hindi-text" >आपका <span>वोट</span> मायने रखता है।<br>इसे कैसे इस्तेमाल
+                    करें।</span>
+                <span class="bengali-text" >আপনার <span>ভোট</span> গুরুত্বপূর্ণ।<br>কীভাবে এটি
+                    ব্যবহার করবেন।</span>
+            </h1>
+            <p class="hero-subtitle english-text">Step-by-step election guidance in your language. Check eligibility,
+                find your booth, understand the process.</p>
+            <p class="hero-subtitle hindi-text" >चरण-दर-चरण चुनाव मार्गदर्शन। पात्रता जांचें, अपना
+                बूथ खोजें, प्रक्रिया समझें।</p>
+            <p class="hero-subtitle bengali-text" >ধাপে ধাপে নির্বাচন গাইডেন্স। যোগ্যতা যাচাই, বুথ
+                খুঁজুন, প্রক্রিয়া বুঝুন।</p>
+
+            <div class="lang-selector">
+                <button class="lang-btn active" onclick="setLang('en', this)">🇮🇳 English</button>
+                <button class="lang-btn" onclick="setLang('hi', this)">हिन्दी</button>
+                <button class="lang-btn" onclick="setLang('bn', this)">বাংলা</button>
+                <button class="lang-btn" onclick="setLang('en', this)">தமிழ்</button>
+                <button class="lang-btn" onclick="setLang('en', this)">తెలుగు</button>
+                <button class="lang-btn" onclick="setLang('en', this)">मराठी</button>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-card-hero">
+                    <span class="stat-num">97Cr</span>
+                    <div class="stat-label">Registered Voters</div>
+                </div>
+                <div class="stat-card-hero">
+                    <span class="stat-num">10.5L</span>
+                    <div class="stat-label">Polling Booths</div>
+                </div>
+                <div class="stat-card-hero">
+                    <span class="stat-num">543</span>
+                    <div class="stat-label">Lok Sabha Seats</div>
+                </div>
+                <div class="stat-card-hero">
+                    <span class="stat-num">6</span>
+                    <div class="stat-label">Steps to Vote</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAV TABS -->
+    <div class="nav-tabs" role="tablist" aria-label="Main Navigation">
+        <div class="nav-tabs-inner">
+            <button class="nav-tab active" role="tab" aria-selected="true" onclick="showTab('dashboard', this)">
+                <span class="tab-icon">🏆</span>
+                <span class="english-text">My Journey</span><span class="hindi-text" >मेरी
+                    यात्रा</span><span class="bengali-text" >আমার যাত্রা</span>
+            </button>
+            <button class="nav-tab" onclick="showTab('steps', this)">
+                <span class="tab-icon">📋</span>
+                <span class="english-text">Steps</span><span class="hindi-text" >चरण</span><span
+                    class="bengali-text" >ধাপ</span>
+            </button>
+            <button class="nav-tab" onclick="showTab('eligibility', this)">
+                <span class="tab-icon">✅</span>
+                <span class="english-text">Eligibility</span><span class="hindi-text"
+                    >पात्रता</span><span class="bengali-text" >যোগ্যতা</span>
+            </button>
+            <button class="nav-tab" onclick="showTab('documents', this)">
+                <span class="tab-icon">📄</span>
+                <span class="english-text">Documents</span><span class="hindi-text"
+                    >दस्तावेज़</span><span class="bengali-text" >নথি</span>
+            </button>
+            <button class="nav-tab" onclick="showTab('booth', this)">
+                <span class="tab-icon">📍</span>
+                <span class="english-text">Find Booth</span><span class="hindi-text" >बूथ
+                    खोजें</span><span class="bengali-text" >বুথ খুঁজুন</span>
+            </button>
+            <button class="nav-tab" onclick="showTab('timeline', this)">
+                <span class="tab-icon">📅</span>
+                <span class="english-text">Timeline</span><span class="hindi-text"
+                    >समयरेखा</span><span class="bengali-text" >সময়রেখা</span>
+            </button>
+            <button class="nav-tab" onclick="showTab('glossary', this)">
+                <span class="tab-icon">📖</span>
+                <span class="english-text">Glossary</span><span class="hindi-text"
+                    >शब्दावली</span><span class="bengali-text" >শব্দকোষ</span>
+            </button>
+            <button class="nav-tab" onclick="showTab('tour', this)">
+                <span class="tab-icon">🎬</span>
+                <span class="english-text">Visual Tour</span><span class="hindi-text" >विज़ुअल
+                    टूर</span><span class="bengali-text" >ভিজ্যুয়াল ট্যুর</span>
+            </button>
+            <button class="nav-tab" onclick="showTab('quiz', this)">
+                <span class="tab-icon">🧠</span>
+                <span class="english-text">Quiz</span><span class="hindi-text"
+                    >प्रश्नोत्तरी</span><span class="bengali-text" >কুইজ</span>
+            </button>
+            <button class="nav-tab" onclick="showTab('learn', this)">
+                <span class="tab-icon">🎓</span>
+                <span class="english-text">Learn</span><span class="hindi-text" >सीखें</span><span
+                    class="bengali-text" >শিখুন</span>
+            </button>
+            <button class="nav-tab" onclick="showTab('chatbot', this)">
+                <span class="tab-icon">🤖</span>
+                <span class="english-text">Ask AI</span><span class="hindi-text" >AI से
+                    पूछें</span><span class="bengali-text" >AI জিজ্ঞেস করুন</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main" id="main-content">
+
+        <!-- DASHBOARD -->
+        <div class="section active" id="sec-dashboard" role="tabpanel">
+            <div class="dashboard-header">
+                <h2>🏅 Your Voter Journey</h2>
+                <div class="level-badge">⭐ Level 1 — Curious Citizen</div>
+                <div style="max-width:400px;margin:12px auto 0;">
+                    <div
+                        style="display:flex;justify-content:space-between;font-size:13px;color:var(--text-secondary);margin-bottom:4px;">
+                        <span>XP Progress</span>
+                        <span id="xp-text">0 / 100 XP</span>
+                    </div>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" id="xp-bar"></div>
+                    </div>
+                    <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Complete steps to earn XP and
+                        unlock achievements!</div>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-bottom:24px;">
+                <div class="card-3d" style="padding:24px;">
+                    <div
+                        style="font-size:13px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">
+                        Sections Completed</div>
+                    <div style="font-size:40px;font-weight:800;color:var(--saffron)" id="sections-done">0/6</div>
+                    <div style="font-size:13px;color:var(--text-secondary);margin-top:4px;">Keep going — you're doing
+                        great!</div>
+                </div>
+                <div class="card-3d" style="padding:24px;">
+                    <div
+                        style="font-size:13px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">
+                        Quiz Score</div>
+                    <div style="font-size:40px;font-weight:800;color:var(--india-green)" id="quiz-score-display">0</div>
+                    <div style="font-size:13px;color:var(--text-secondary);margin-top:4px;">Try the quiz to test your
+                        knowledge!</div>
+                </div>
+            </div>
+
+            <div class="card-3d" style="margin-bottom:24px;padding:28px;">
+                <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">🎖 Achievements</h3>
+                <div class="achievements-grid" id="achievements-grid"></div>
+            </div>
+
+            <div class="card-3d" style="padding:28px;">
+                <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">📊 Daily Voter Fact</h3>
+                <div style="background:linear-gradient(135deg,#EEF0FB,#E8F5EE);border-radius:var(--radius-lg);padding:20px;"
+                    id="daily-fact">
+                    <div style="font-size:32px;margin-bottom:10px;">🗳️</div>
+                    <p style="font-size:16px;font-weight:600;color:var(--text-primary);line-height:1.6">India conducts
+                        the largest democratic elections in the world. In the 2024 Lok Sabha elections, over 642 million
+                        people voted — more than the entire population of most continents!</p>
+                </div>
+                <button class="btn-primary" style="margin-top:14px;padding:12px;" onclick="newFact()">✨ Show New
+                    Fact</button>
+            </div>
+        </div>
+
+        <!-- STEPS TO VOTE -->
+        <div class="section" id="sec-steps">
+            <div class="section-header">
+                <div class="section-icon-box" style="background:var(--saffron-pale)">📋</div>
+                <div>
+                    <div class="section-title english-text">How to Vote — Step by Step</div>
+                    <div class="section-title hindi-text" >कैसे वोट करें — चरण दर चरण</div>
+                    <div class="section-title bengali-text" >কিভাবে ভোট দেবেন — ধাপে ধাপে</div>
+                    <div class="section-subtitle">Click each step to mark as done and earn XP</div>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <h3>💡 Just follow these 6 steps</h3>
+                <p style="font-size:14px;color:var(--text-secondary)">No googling required. Everything you need is right
+                    here. Tap each step to learn more.</p>
+            </div>
+            <div class="steps-wrapper" id="steps-list"></div>
+        </div>
+
+        <!-- ELIGIBILITY -->
+        <div class="section" id="sec-eligibility">
+            <div class="section-header">
+                <div class="section-icon-box" style="background:var(--india-green-pale)">✅</div>
+                <div>
+                    <div class="section-title english-text">Check Your Eligibility</div>
+                    <div class="section-title hindi-text" >अपनी पात्रता जांचें</div>
+                    <div class="section-title bengali-text" >আপনার যোগ্যতা যাচাই করুন</div>
+                    <div class="section-subtitle">Answer 4 simple questions to see if you can vote</div>
+                </div>
+            </div>
+            <div class="eligibility-form">
+                <div class="form-group">
+                    <label class="form-label">1. Your Age</label>
+                    <input type="number" class="form-input" id="age-input" placeholder="Enter your age" min="1"
+                        max="120">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">2. Are you an Indian Citizen?</label>
+                    <select class="form-select" id="citizen-input">
+                        <option value="">Select...</option>
+                        <option value="yes">Yes, I am an Indian Citizen</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">3. Do you have a permanent residence in India?</label>
+                    <select class="form-select" id="resident-input">
+                        <option value="">Select...</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">4. Are you a registered voter?</label>
+                    <select class="form-select" id="registered-input">
+                        <option value="">Select...</option>
+                        <option value="yes">Yes, I am registered</option>
+                        <option value="no">No, I need to register</option>
+                        <option value="unsure">Not sure</option>
+                    </select>
+                </div>
+                <button class="btn-primary" onclick="checkEligibility()" aria-label="Check Eligibility">🔍 Check My Eligibility</button>
+                <div class="result-box" id="eligibility-result" aria-live="polite"></div>
+            </div>
+        </div>
+
+        <!-- DOCUMENTS -->
+        <div class="section" id="sec-documents">
+            <div class="section-header">
+                <div class="section-icon-box" style="background:#EEF0FB">📄</div>
+                <div>
+                    <div class="section-title">Documents to Carry</div>
+                    <div class="section-subtitle">Tap each document to check it off your list</div>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <h3>📌 What to Carry on Election Day</h3>
+                <p style="font-size:14px;color:var(--text-secondary)">You need <strong>one</strong> photo ID from the
+                    list below. The Elector Photo Identity Card (EPIC/Voter ID) is the primary document, but 12
+                    alternatives are accepted.</p>
+            </div>
+            <div class="doc-grid" id="doc-grid"></div>
+            <div
+                style="margin-top:20px;padding:16px 20px;background:var(--gold-pale);border-radius:var(--radius-lg);border:1px solid var(--gold);">
+                <strong style="color:#8B6700">⚠️ Remember:</strong>
+                <span style="font-size:14px;color:var(--text-secondary);margin-left:8px;">Carry only ONE of the above.
+                    The voter must match the name on the electoral roll.</span>
+            </div>
+        </div>
+
+        <!-- FIND BOOTH -->
+        <div class="section" id="sec-booth">
+            <div class="section-header">
+                <div class="section-icon-box" style="background:var(--saffron-pale)">📍</div>
+                <div>
+                    <div class="section-title">Find Polling Booths Near You</div>
+                    <div class="section-subtitle">Showing centres near your location</div>
+                </div>
+            </div>
+            <div class="map-container">
+                <div class="map-search-row">
+                    <input type="text" class="map-input" id="location-input"
+                        placeholder="Enter your locality, district or pincode..." aria-label="Search Location">
+                    <button class="map-btn" onclick="searchBooths()" aria-label="Search Booths">🔍 Search</button>
+                    <button class="map-btn" style="background:var(--navy)" onclick="useMyLocation()" aria-label="Use My Location">📍 My
+                        Location</button>
+                </div>
+                <div class="fake-map" id="map-area">
+                    <div class="map-grid"></div>
+                    <div class="map-road-h" style="top:40%;left:0;right:0;"></div>
+                    <div class="map-road-h" style="top:65%;left:0;right:0;"></div>
+                    <div class="map-road-v" style="left:30%;top:0;bottom:0;"></div>
+                    <div class="map-road-v" style="left:65%;top:0;bottom:0;"></div>
+                    <div class="map-marker" style="left:30%;top:40%">
+                        <div class="marker-label">Government School, Sector 12</div>
+                        <div class="marker-pin" style="background:var(--saffron)"><span class="marker-icon">🏫</span>
+                        </div>
+                    </div>
+                    <div class="map-marker" style="left:65%;top:40%">
+                        <div class="marker-label">Community Hall, Block B</div>
+                        <div class="marker-pin" style="background:var(--india-green)"><span
+                                class="marker-icon">🏛️</span></div>
+                    </div>
+                    <div class="map-marker" style="left:48%;top:65%">
+                        <div class="marker-label">Municipal School, Ward 7</div>
+                        <div class="marker-pin" style="background:var(--navy)"><span class="marker-icon">🏫</span></div>
+                    </div>
+                    <div class="map-marker" style="left:20%;top:70%">
+                        <div class="marker-label">Panchayat Bhavan</div>
+                        <div class="marker-pin" style="background:var(--gold)"><span class="marker-icon">🏢</span></div>
+                    </div>
+                    <div class="map-marker" style="left:45%;top:50%">
+                        <div class="marker-pin" style="background:#2196F3;animation:pulse 1s infinite;"><span
+                                class="marker-icon">📱</span></div>
+                    </div>
+                    <div
+                        style="position:absolute;bottom:12px;right:12px;background:white;border-radius:8px;padding:8px 12px;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+                            <div style="width:12px;height:12px;border-radius:50%;background:var(--saffron)"></div>
+                            Polling Booth
+                        </div>
+                        <div style="display:flex;align-items:center;gap:6px;">
+                            <div style="width:12px;height:12px;border-radius:50%;background:#2196F3"></div> You
+                        </div>
+                    </div>
+                    <div
+                        style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:white;border-radius:8px;padding:8px 12px;font-size:12px;">
+                        🔵 Connect to Google Maps for live data</div>
+                </div>
+                <div id="google-map-area" style="display:none; width: 100%; height: 300px; border-radius: var(--radius-lg); margin-top: 10px;"></div>
+                <div class="booth-list" id="booth-list" aria-live="polite"></div>
+            </div>
+            <div
+                style="margin-top:16px;padding:16px 20px;background:var(--india-green-pale);border-radius:var(--radius-lg);border:1px solid var(--india-green);font-size:14px;color:var(--india-green)">
+                🔗 For accurate live booth data, visit <strong>voters.eci.gov.in</strong> or call helpline
+                <strong>1950</strong>
+            </div>
+        </div>
+
+        <!-- TIMELINE -->
+        <div class="section" id="sec-timeline">
+            <div class="section-header">
+                <div class="section-icon-box" style="background:var(--gold-pale)">📅</div>
+                <div>
+                    <div class="section-title">Election Timeline</div>
+                    <div class="section-subtitle">Key dates and milestones in the election process</div>
+                </div>
+            </div>
+            <div class="timeline" id="timeline-container"></div>
+        </div>
+
+        <!-- GLOSSARY -->
+        <div class="section" id="sec-glossary">
+            <div class="section-header">
+                <div class="section-icon-box" style="background:var(--saffron-pale)">📖</div>
+                <div>
+                    <div class="section-title">Election Glossary</div>
+                    <div class="section-subtitle">Tap 🔊 to hear any term spoken aloud</div>
+                </div>
+            </div>
+            <div class="glossary-search">
+                <span class="glossary-search-icon">🔍</span>
+                <input type="text" placeholder="Search election terms..." id="glossary-search"
+                    oninput="filterGlossary(this.value)">
+            </div>
+            <div id="glossary-list"></div>
+        </div>
+
+        <!-- VISUAL TOUR -->
+        <div class="section" id="sec-tour">
+            <div class="section-header">
+                <div class="section-icon-box" style="background:#EEF0FB">🎬</div>
+                <div>
+                    <div class="section-title">Visual Tour of Election Day</div>
+                    <div class="section-subtitle">An animated walkthrough of what happens on voting day</div>
+                </div>
+            </div>
+            <div class="tour-container">
+                <div class="tour-stage" id="tour-stage">
+                    <div class="tour-illustration" id="tour-emoji">🗳️</div>
+                    <div class="tour-overlay-text">
+                        <div class="tour-step-title" id="tour-title">Polling Day Begins</div>
+                        <div class="tour-step-subtitle" id="tour-subtitle">Booths open at 7 AM across India</div>
+                    </div>
+                </div>
+                <div style="padding:16px 24px;border-bottom:1px solid var(--border);">
+                    <p id="tour-body" style="font-size:15px;color:var(--text-secondary);line-height:1.7;">On election
+                        day, polling stations across India open at 7 AM. Thousands of polling officers, security
+                        personnel, and officials manage the process.</p>
+                </div>
+                <div class="tour-nav">
+                    <button class="tour-nav-btn" onclick="tourNav(-1)" id="tour-prev">← Previous</button>
+                    <div class="tour-steps-dots" id="tour-dots"></div>
+                    <button class="tour-nav-btn primary" onclick="tourNav(1)" id="tour-next">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ -->
+        <div class="section" id="sec-quiz">
+            <div class="section-header">
+                <div class="section-icon-box" style="background:var(--india-green-pale)">🧠</div>
+                <div>
+                    <div class="section-title">Test Your Knowledge</div>
+                    <div class="section-subtitle">10 questions · Earn XP for correct answers</div>
+                </div>
+            </div>
+            <div id="quiz-container"></div>
+        </div>
+
+        <!-- LEARN ABOUT ELECTION SYSTEM -->
+        <div class="section" id="sec-learn">
+            <div class="section-header">
+                <div class="section-icon-box" style="background:linear-gradient(135deg,#EEF0FB,#E8F5EE)">🎓</div>
+                <div>
+                    <div class="section-title">Learn About India's Election System</div>
+                    <div class="section-subtitle">Deep-dive into how democracy works in India</div>
+                </div>
+            </div>
+
+            <!-- Topic Selector -->
+            <div class="learn-topics" id="learn-topics">
+                <button class="learn-topic-btn active" onclick="showLearnTopic('structure', this)">🏛️ System
+                    Structure</button>
+                <button class="learn-topic-btn" onclick="showLearnTopic('evm', this)">⚡ EVM & VVPAT</button>
+                <button class="learn-topic-btn" onclick="showLearnTopic('parties', this)">🎯 Political Parties</button>
+                <button class="learn-topic-btn" onclick="showLearnTopic('mcc', this)">📜 Model Code</button>
+                <button class="learn-topic-btn" onclick="showLearnTopic('history', this)">📜 History</button>
+                <button class="learn-topic-btn" onclick="showLearnTopic('rights', this)">⚖️ Voter Rights</button>
+            </div>
+
+            <div class="learn-content" id="learn-content">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- AI CHATBOT -->
+        <div class="section" id="sec-chatbot">
+            <div class="section-header">
+                <div class="section-icon-box" style="background:linear-gradient(135deg,var(--navy),var(--india-green))">
+                    🤖</div>
+                <div>
+                    <div class="section-title">Ask VoteWise AI</div>
+                    <div class="section-subtitle">Your intelligent election assistant — ask anything about Indian
+                        elections</div>
+                </div>
+            </div>
+
+            <div class="chatbot-container">
+                <!-- Chat Header -->
+                <div class="chatbot-header">
+                    <div class="chatbot-avatar">
+                        <div class="avatar-ring">☸</div>
+                    </div>
+                    <div class="chatbot-info">
+                        <div class="chatbot-name">VoteWise AI</div>
+                        <div class="chatbot-status"><span class="status-dot"></span> Ready to help</div>
+                    </div>
+                    <button class="chat-clear-btn" onclick="clearChat()">🗑️ Clear</button>
+                </div>
+
+                <!-- Suggested Questions -->
+                <div class="chat-suggestions" id="chat-suggestions">
+                    <div class="suggestions-label">💡 Try asking:</div>
+                    <div class="suggestions-grid">
+                        <button class="suggestion-chip" onclick="sendSuggestion(this)">How do I register to
+                            vote?</button>
+                        <button class="suggestion-chip" onclick="sendSuggestion(this)">What is NOTA?</button>
+                        <button class="suggestion-chip" onclick="sendSuggestion(this)">How does the EVM work?</button>
+                        <button class="suggestion-chip" onclick="sendSuggestion(this)">What is the Lok Sabha?</button>
+                        <button class="suggestion-chip" onclick="sendSuggestion(this)">Who is eligible to vote?</button>
+                        <button class="suggestion-chip" onclick="sendSuggestion(this)">What happens after
+                            voting?</button>
+                    </div>
+                </div>
+
+                <!-- Messages -->
+                <div class="chat-messages" id="chat-messages" aria-live="polite" aria-atomic="false">
+                    <div class="chat-message bot">
+                        <div class="message-avatar">🗳️</div>
+                        <div class="message-bubble">
+                            <p>Jai Hind! 🇮🇳 I'm VoteWise AI, your personal guide to India's democratic process.</p>
+                            <p style="margin-top:8px;">Ask me anything — from how to register to vote, how EVMs work,
+                                what your rights are as a voter, the history of Indian elections, political parties, and
+                                much more!</p>
+                            <div class="message-time">Just now</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input -->
+                <div class="chat-input-area">
+                    <div class="chat-input-row">
+                        <input type="text" class="chat-input" id="chat-input"
+                            placeholder="Ask anything about Indian elections..." aria-label="Chat Message Input"
+                            onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendMessage();}">
+                        <button class="chat-send-btn" onclick="sendMessage()" id="send-btn" aria-label="Send Message">
+                            <span class="send-icon">➤</span>
+                        </button>
+                    </div>
+                    <div class="chat-disclaimer">⚠️ Requires Anthropic API key · Responses are AI-generated for
+                        educational purposes only</div>
+                </div>
+            </div>
+
+            <!-- API Key Setup -->
+            <div class="api-key-section" id="api-key-section">
+                <div class="api-key-card">
+                    <div style="font-size:40px;margin-bottom:12px">🔑</div>
+                    <h3>Connect to AI</h3>
+                    <p>To use the AI chatbot, enter your Anthropic API key. Your key stays in your browser only.</p>
+                    <div class="api-key-input-row">
+                        <input type="password" id="api-key-input" placeholder="sk-ant-..." class="form-input">
+                        <button class="btn-primary" style="width:auto;padding:12px 24px;"
+                            onclick="saveApiKey()">Connect</button>
+                    </div>
+                    <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">
+                        Get your API key at <a href="https://console.anthropic.com" target="_blank"
+                            style="color:var(--saffron)">console.anthropic.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end main -->
+
+    <!-- FLOATING CHAT BUTTON -->
+    <button class="floating-chat-btn" onclick="showTab('chatbot', document.querySelector('[onclick*=chatbot]'))"
+        title="Ask AI">
+        🤖
+        <span class="float-btn-label">Ask AI</span>
+    </button>
+
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script defer src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics-compat.js"></script>
+    
+    <!-- Google Maps script loaded async and deferred -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
+
+    <script defer src="app.js"></script>
+    <script defer src="learn.html"></script>
+    <script defer src="chatbot.js"></script>
+</body>
+
+</html>
