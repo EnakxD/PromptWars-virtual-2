@@ -1,0 +1,21 @@
+{
+  "headers": [
+    {
+      "source": "**/*",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://www.gstatic.com https://cdn.jsdelivr.net https://apis.google.com https://translate.google.com https://translate.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://translate.googleapis.com; font-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com https://www.gstatic.com https://translate.googleapis.com; connect-src 'self' https://firebaseinstallations.googleapis.com https://firebaselogging.googleapis.com https://maps.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://translate.googleapis.com; frame-src 'self' https://promptwars-2-5f208.firebaseapp.com https://maps.google.com"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    }
+  ]
+}
